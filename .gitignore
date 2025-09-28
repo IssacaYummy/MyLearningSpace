@@ -1,3 +1,4 @@
+# 忽略编译生成的文件
 *.exe
 *.o
 *.obj
@@ -5,4 +6,20 @@
 *.a
 *.dll
 *.out
-!*.*
+
+# 忽略IDE和编辑器生成的文件
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 忽略临时文件
+*.tmp
+*.temp
+*.log
