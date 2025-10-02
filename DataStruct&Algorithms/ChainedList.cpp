@@ -20,7 +20,10 @@ typedef Node* LinkList;
 /* Function Declaration */
 Status GetElem(LinkList L, int pos, ElemTpye &e);
 Status InsertElem(LinkList L, int pos, ElemTpye e);
-Status DeliteElem(LinkList L, int pos);
+Status DeleteElem(LinkList L, int pos, ElemTpye &e);
+void CreateListHead(LinkList &L, int n);
+void CreateListTail(LinkList &L, int n);
+
 
 int main()
 {
@@ -119,4 +122,47 @@ Status DeleteElem(LinkList L, int pos, ElemTpye &e)
     delete q;
     
     return OK;
+}
+
+
+void CreateListHead(LinkList &L, int n)
+{
+    LinkList p;
+    int i;
+
+    srand(time(0));
+
+    L = (LinkList)new(Node);
+    L->Next = NULL;
+
+    for(i = 0; i < n; i++)
+    {
+        p = (LinkList)new(Node);
+        p->data = rand()%100+1;
+        p->Next = L->Next;
+        L->Next = p;
+    }
+}
+
+
+
+void CreateListTail(LinkList &L, int n)
+{
+    LinkList p;
+    int i;
+
+    srand(time(0));
+
+    L = (LinkList)new(Node);
+    LinkList q = L;
+
+    for(i = 0; i < n; i++)
+    {
+        p = (LinkList)new(Node);
+        p->data = rand()%100+1;
+        q->Next = p;
+        q = p;
+
+        
+    }
 }
