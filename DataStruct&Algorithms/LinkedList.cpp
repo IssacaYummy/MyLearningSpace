@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 
 #define MAXSIZE 100
 
@@ -23,6 +24,7 @@ Status InsertElem(LinkList L, int pos, ElemTpye e);
 Status DeleteElem(LinkList L, int pos, ElemTpye &e);
 void CreateListHead(LinkList &L, int n);
 void CreateListTail(LinkList &L, int n);
+Status DeleteList(LinkList &L);
 
 
 int main()
@@ -145,7 +147,9 @@ void CreateListHead(LinkList &L, int n)
 }
 
 
-
+/**
+ * @brief Create a linked list with tail-insert method
+ */
 void CreateListTail(LinkList &L, int n)
 {
     LinkList p;
@@ -162,7 +166,27 @@ void CreateListTail(LinkList &L, int n)
         p->data = rand()%100+1;
         q->Next = p;
         q = p;
-
-        
     }
+    q->Next = NULL;
+}
+
+/**
+ * @brief Delete the hole List
+ */
+Status DeleteList(LinkList &L)
+{
+    LinkList p,q;
+
+    p = L->Next;
+
+    while(p)
+    {
+        q = p->Next;
+        free(p);
+        p = q;
+    }
+
+    L->Next = NULL;
+
+    return OK;
 }
